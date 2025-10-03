@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.GameJar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4d4634</item>
+        <item name="colorPrimaryVariant">#4d4634</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorButtonNormal">#4d4634</item>
+
+    </style>
+
+    <style name="Theme.GameJar" parent="Base.Theme.GameJar" />
+</resources>

@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D77E2F">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+
+    >
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="750dp"
+        android:orientation="vertical"
+        android:background="@drawable/ticket"
+        android:padding="32dp"
+        android:layout_marginTop="40dp"
+        >
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:background="@drawable/profil_bulat"/>
+        <EditText
+            android:layout_marginTop="30dp"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:hint="Username:"
+            />
+        <EditText
+            android:layout_marginTop="30dp"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:hint="Password:"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="30dp"
+                android:layout_height="22dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I Agree to the terms and Conditions and Privacy Policy."/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doesn't Have an Account?"
+                android:textSize="13dp"/>
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:text="@string/under_line_signup"
+                android:textSize="13dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GET IN TOUCH"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LET US KNOW YOU"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/tombol_login_signup"
+            android:text="LOGIN"
+            android:textSize="33dp"
+            android:textColor="#D4C79D"
+            android:padding="1dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
