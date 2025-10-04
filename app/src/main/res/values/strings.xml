@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GameJar</string>
-    <string name="under_line_signup"><u>Sign Up Here</u></string>
+    <string name="under_line_signup"><u>Sign Up</u></string>
+    <string name="login"><u>Login</u></string>
 </resources>
