@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="@string/under_line_signup"
+                    android:text="@string/login"
                     android:textSize="13dp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/tombol_login_signup"
-                android:text="LOGIN"
+                android:text="SIGN UP"
                 android:textSize="33dp"
                 android:textColor="#D4C79D"
                 android:padding="1dp"
