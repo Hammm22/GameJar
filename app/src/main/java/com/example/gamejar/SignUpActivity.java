@@ -4,28 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private FrameLayout containerTop, containerBottom;
-    private LinearLayout ticketStack;
-    private Button loginButton;
+    private Button signupButton;
     private TIcketAnimator ticketAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_page);
+        setContentView(R.layout.signup_page); // your sign-up XML layout
 
         containerTop = findViewById(R.id.containerTop);
         containerBottom = findViewById(R.id.containerBottom);
-        ticketStack = findViewById(R.id.ticketStack);
-        loginButton = findViewById(R.id.loginButton);
+        signupButton = findViewById(R.id.signButton);
 
         ticketAnimator = new TIcketAnimator();
 
-        loginButton.setOnClickListener(v ->
+        signupButton.setOnClickListener(v ->
                 ticketAnimator.startTearAnimation(containerTop, containerBottom)
         );
     }

@@ -1,0 +1,169 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ce7d40">
+
+    <LinearLayout
+        android:id="@+id/boxGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+<!--Tiket bagian atas-->
+        <FrameLayout
+            android:id="@+id/containerTop"
+            android:layout_width="290dp"
+            android:layout_height="470dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/top"
+                android:scaleType="fitXY"
+                android:padding="0dp"
+                android:layout_margin="0dp"
+                android:id="@+id/tiketTop"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="330dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/profil_bulat"
+                        android:padding="6dp"/>
+
+                    <EditText
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Username: "
+                        android:id="@+id/signupName"
+                        android:inputType="text"
+                        android:textColorHint="@color/black"
+                        android:backgroundTint="@color/black"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="2dp"/>
+                    <EditText
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number: "
+                        android:inputType="phone"
+                        android:id="@+id/signupPhone"
+                        android:textColorHint="@color/black"
+                        android:backgroundTint="@color/black"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="2dp"/>
+                    <EditText
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Password: "
+                        android:textColorHint="@color/black"
+                        android:backgroundTint="@color/black"
+                        android:textColor="@color/black"
+                        android:inputType="textPassword"
+                        android:id="@+id/signupPass"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="10dp"
+
+                        >
+                        <CheckBox
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:buttonTint="@color/black"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="I agree to the Terms and Conditions and Privacy Policy."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="Have an Account?"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/login"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+<!--Tiket bagian bawah-->
+        <FrameLayout
+            android:id="@+id/containerBottom"
+            android:layout_width="290dp"
+            android:layout_height="200dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bottom"
+                android:scaleType="fitXY"
+                android:padding="0dp"
+                android:layout_margin="0dp"
+                android:id="@+id/tiketBottom"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="GET IN TOUCH"
+                        android:textAlignment="center"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:padding="15dp"
+                        />
+                <Button
+                    android:layout_width="240dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/kotak_button"
+                    android:layout_marginTop="10dp"
+                    android:text="SIGN UP"
+                    android:textSize="25dp"
+                    android:id="@+id/signButton"
+                    android:textStyle="bold"
+                    android:textColor="#D2C2AA"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
