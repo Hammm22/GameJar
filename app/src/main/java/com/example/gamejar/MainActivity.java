@@ -1,32 +1,70 @@
 package com.example.gamejar;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.example.gamejar.databinding.DashboardBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FrameLayout containerTop, containerBottom;
-    private LinearLayout ticketStack;
-    private Button loginButton;
-    private TIcketAnimator ticketAnimator;
+    private DashboardBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_page);
+        bind = DashboardBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        containerTop = findViewById(R.id.containerTop);
-        containerBottom = findViewById(R.id.containerBottom);
-        ticketStack = findViewById(R.id.ticketStack);
-        loginButton = findViewById(R.id.loginButton);
+        // Set bottom app bar as toolbar
+        setSupportActionBar(bind.bottomAppBar);
 
-        ticketAnimator = new TIcketAnimator();
+        // Default fragment
+        loadFragment(new HomeFragment());
 
-        loginButton.setOnClickListener(v ->
-                ticketAnimator.startTearAnimation(containerTop, containerBottom)
-        );
+        // Bottom navigation listener
+        bind.bottomNavbar.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.Home) {
+                loadFragment(new HomeFragment());
+            }
+            else if (id == R.id.Search) {
+                loadFragment(new SearchFragment());
+            }
+            else if (id == R.id.Progress) {
+                loadFragment(new ProgressFragment());
+            }
+            else if (id == R.id.Profile) {
+                loadFragment(new ProfileFragment());
+            }
+
+            return true;
+        });
+
+
+        // FAB action
+        bind.fabAdd.setOnClickListener(v -> {
+            // Tambahkan aksi
+        });
+
+        // Realtime blur (Android 12+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            View blurView = bind.blurView;
+            blurView.setRenderEffect(RenderEffect.createBlurEffect(
+                    40f, 40f, Shader.TileMode.CLAMP
+            ));
+        }
+    }
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .commit();
     }
 }

@@ -4,7 +4,9 @@
         <item name="colorPrimary">#4d4634</item>
         <item name="colorPrimaryVariant">#4d4634</item>
         <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:statusBarColor">@color/transparent</item>
         <item name="colorButtonNormal">#4d4634</item>
+
 
     </style>
 

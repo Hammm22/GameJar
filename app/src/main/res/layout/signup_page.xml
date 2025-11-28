@@ -95,7 +95,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
+                            android:textSize="15sp"
                             android:textColor="@color/black"
                             android:text="I agree to the Terms and Conditions and Privacy Policy."/>
                     </LinearLayout>
@@ -110,13 +110,16 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:text="Have an Account?"/>
-                        <TextView
+
+                        <Button
+                            android:id="@+id/toLogin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/login"
-                            android:textStyle="bold"
+                            android:background="#00000000"
+                            android:text="Login"
                             android:textColor="@color/black"
-                            />
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
