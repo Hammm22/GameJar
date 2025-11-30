@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.dashboard);
         bind = DashboardBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
@@ -36,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if (id == R.id.Search) {
                 loadFragment(new SearchFragment());
-            }
-            else if (id == R.id.Progress) {
+            }  else if (id == R.id.Progress) {
                 loadFragment(new ProgressFragment());
             }
             else if (id == R.id.Profile) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         // FAB action
         bind.fabAdd.setOnClickListener(v -> {
-            // Tambahkan aksi
+            loadFragment(new AddFragment());
         });
 
         // Realtime blur (Android 12+)

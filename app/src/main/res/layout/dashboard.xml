@@ -24,18 +24,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#252847"
+        android:background="#2F3C7E"
         app:fabCradleMargin="10dp"
-        app:fabAttached="true"
         app:fabAnchorMode="cradle"
         app:fabCradleRoundedCornerRadius="50dp"
         app:fabAlignmentMode="center">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#402F3C7E"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_menu" />
 
@@ -45,6 +44,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
+        app:fabCustomSize="70dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#f2b7c0"
         android:src="@drawable/tambah_icon"
