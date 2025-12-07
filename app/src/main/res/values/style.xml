@@ -7,4 +7,10 @@
         <item name="android:windowBackground">@android:color/transparent</item>
 
     </style>
+
+    <style name="CustomBottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemPaddingTop">10dp</item>
+        <item name="itemPaddingBottom">0dp</item>
+    </style>
+
 </resources>

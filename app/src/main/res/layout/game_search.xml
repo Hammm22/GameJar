@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:background="@drawable/search_game_style"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/searchGameNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="15pt"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/searchGameHarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harga"
+        android:textColor="#FF0000"
+        android:textSize="12pt"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/searchGameLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Link"
+        android:textColor="@color/white"
+        android:textSize="7pt"
+        android:textAlignment="center"/>
+</LinearLayout>

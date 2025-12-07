@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.gamejar.databinding.DashboardBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,12 +19,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dashboard);
+
+        // Inflate layout dengan ViewBinding
         bind = DashboardBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
-
-        // Set bottom app bar as toolbar
-        setSupportActionBar(bind.bottomAppBar);
 
         // Default fragment
         loadFragment(new HomeFragment());
@@ -34,32 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
             if (id == R.id.Home) {
                 loadFragment(new HomeFragment());
-            }
-            else if (id == R.id.Search) {
+            } else if (id == R.id.Search) {
                 loadFragment(new SearchFragment());
-            }  else if (id == R.id.Progress) {
+            } else if(id == R.id.Add){
+                loadFragment(new AddFragment());
+            }else if (id == R.id.Progress) {
                 loadFragment(new ProgressFragment());
-            }
-            else if (id == R.id.Profile) {
+            } else if (id == R.id.Profile) {
                 loadFragment(new ProfileFragment());
             }
 
             return true;
         });
-
-
-        // FAB action
-        bind.fabAdd.setOnClickListener(v -> {
-            loadFragment(new AddFragment());
-        });
-
-        // Realtime blur (Android 12+)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            View blurView = bind.blurView;
-            blurView.setRenderEffect(RenderEffect.createBlurEffect(
-                    40f, 40f, Shader.TileMode.CLAMP
-            ));
-        }
     }
 
     private void loadFragment(Fragment fragment) {

@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ce7d40">
+    android:background="@drawable/gradient_bg_theme">
 
     <LinearLayout
         android:id="@+id/boxGroup"
@@ -88,6 +88,7 @@
 
                         >
                         <CheckBox
+                            android:id="@+id/Check"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:buttonTint="@color/black"

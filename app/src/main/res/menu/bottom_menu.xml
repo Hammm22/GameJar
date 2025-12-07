@@ -10,8 +10,10 @@
     android:icon="@drawable/search_icon"/>
     <item
     android:id="@+id/Add"
-    android:title=""
-    android:enabled="false"/>
+    android:title="Add"
+        android:icon="@drawable/tambah_icon"
+        
+    />
     <item
     android:id="@+id/Progress"
     android:title="Progress"
@@ -19,5 +21,5 @@
     <item
     android:id="@+id/Profile"
     android:title="Profile"
-    android:icon="@drawable/home_icon"/>
+    android:icon="@drawable/profile"/>
 </menu>
