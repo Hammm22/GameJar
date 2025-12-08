@@ -18,7 +18,7 @@
     android:layout_marginTop="55dp"/>
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:layout_height="60dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,33 +29,43 @@
         android:orientation="vertical"
         >
     <EditText
+        android:id="@+id/TambahNama"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="10dp"
         android:layout_height="50dp"
         android:textAlignment="center"
         android:background="@drawable/edit_text_tambah"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+
         android:hint="Nama Game"/>
         <Space
         android:layout_width="match_parent"
         android:layout_height="25dp"/>
 
         <EditText
-        android:layout_width="match_parent"
+            android:id="@+id/TambahHarga"
+            android:layout_width="match_parent"
             android:layout_marginHorizontal="10dp"
-        android:layout_height="50dp"
+            android:layout_height="50dp"
             android:textAlignment="center"
             android:background="@drawable/edit_text_tambah"
-        android:hint="Harga Game"/>
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:hint="Harga Game"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="25dp"/>
         <EditText
-        android:layout_width="match_parent"
+            android:id="@+id/TambahTabung"
+            android:layout_width="match_parent"
             android:layout_marginHorizontal="10dp"
             android:textAlignment="center"
-        android:layout_height="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/edit_text_tambah"
-        android:hint="Tabungan/Hari (Rp.)"/>
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:hint="Tabungan/Hari (Rp.)"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="25dp"/>
@@ -77,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:singleSelection="true"
+                android:outlineSpotShadowColor="@color/white"
                 app:selectionRequired="true">
 
                 <com.google.android.material.button.MaterialButton
@@ -84,6 +95,7 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Harian"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -91,6 +103,7 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Mingguan"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -98,6 +111,7 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Bulanan"/>
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -107,6 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"/>
         <Button
+            android:id="@+id/Tambah"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:text="Tambah"

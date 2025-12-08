@@ -1,6 +1,7 @@
 package com.example.gamejar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,13 +10,10 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.gamejar.DataBase.DBManager;
 import android.os.Handler;
 import android.os.Looper;
-
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-        // Bind view
+        // View Binding
         containerTop = findViewById(R.id.containerTop);
         containerBottom = findViewById(R.id.containerBottom);
         ticketStack = findViewById(R.id.ticketStack);
@@ -40,17 +38,17 @@ public class LoginActivity extends AppCompatActivity {
         etName = findViewById(R.id.loginName);
         etPassword = findViewById(R.id.loginPass);
 
-        // Inisialisasi DBManager & TicketAnimator
+        // DB & Animator
         dbManager = new DBManager(this);
         ticketAnimator = new TicketAnimator();
 
-        // Tombol navigasi ke SignUp
+        // ➤ Button to SignUp
         toSign.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             Log.d("KeSign", "ke Sign Page");
         });
 
-        // Tombol Login
+        // ➤ Button Login
         loginButton.setOnClickListener(v -> {
             String nameOrPhone = etName.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
@@ -68,23 +66,31 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-
+            // ===== CHECK LOGIN =====
             boolean success = dbManager.loginUser(nameOrPhone, password);
+
             if (success) {
                 Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                ticketAnimator.startTearAnimation(containerTop, containerBottom);
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-                    }
 
-                }, 2000);
+                // ===== SIMPAN USER KE SHAREDPREFERENCES =====
+                SharedPreferences prefs = getSharedPreferences("USER_DATA", MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("phone", nameOrPhone);   // penting!
+                editor.apply();
+                // ============================================
+
+                // ANIMASI TICKET
+                ticketAnimator.startTearAnimation(containerTop, containerBottom);
+
+                // DELAY 2 DETIK LALU MASUK MAIN PAGE
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }, 1000);
+
             } else {
-                    Toast.makeText(this, "Username / Phone or Password is incorrect", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(this, "Username / Phone or Password is incorrect", Toast.LENGTH_SHORT).show();
+            }
 
             Log.d("Login", "Login clicked");
         });

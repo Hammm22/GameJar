@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.gamejar.DataBase.DBManager;
+import com.example.gamejar.DataBase.DataBaseHelper;
 
 import android.content.Intent;
 import android.widget.Button;
@@ -43,9 +44,10 @@ public class ProfileFragment extends Fragment {
 
         if(phone != null) {
             Cursor cursor = dbManager.getUser(phone);
-            if(cursor != null && cursor.moveToFirst()) {
-                String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-                String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow("phone"));
+            if (cursor != null && cursor.moveToFirst()) {
+
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Name));
+                String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Phone ));
 
                 tvName.setText(name);
                 tvPhone.setText(phoneNumber);

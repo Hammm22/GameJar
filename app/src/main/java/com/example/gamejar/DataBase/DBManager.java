@@ -13,6 +13,7 @@ public class DBManager {
         dbHelper = new DataBaseHelper(context);
     }
 
+
     public boolean registerUser(String name, String phone, String password) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -33,7 +34,6 @@ public class DBManager {
                 " WHERE (" + DataBaseHelper.Col_Name + "=? OR " + DataBaseHelper.Col_Phone + "=?) AND " + DataBaseHelper.Col_Password + "=?";
 
         Cursor cursor = db.rawQuery(query, new String[]{nameOrPhone, nameOrPhone, password});
-
         boolean exists = cursor.getCount() > 0;
         cursor.close();
         db.close();
@@ -42,7 +42,28 @@ public class DBManager {
 
     public Cursor getUser(String phone){
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DataBaseHelper.TABLE_USERS + " WHERE " + DataBaseHelper.Col_Phone + " = ?", new String[]{phone});
-        return cursor;
+        return db.rawQuery("SELECT * FROM " + DataBaseHelper.TABLE_USERS +
+                " WHERE " + DataBaseHelper.Col_Phone + " = ?", new String[]{phone});
+    }
+
+    public boolean addWishlist(String userPhone, String gameName, String price, String savingPerDay, String plan){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DataBaseHelper.Col_User_Phone, userPhone);
+        values.put(DataBaseHelper.Col_Game_Name, gameName);
+        values.put(DataBaseHelper.Col_Game_Price, price);
+        values.put(DataBaseHelper.Col_Saving_Per_Day, savingPerDay);
+        values.put(DataBaseHelper.Col_Saving_Plan, plan);
+
+        long result = db.insert(DataBaseHelper.TABLE_WISHLIST, null, values);
+        db.close();
+        return result != -1;
+    }
+
+    public Cursor getWishlist(String userPhone){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + DataBaseHelper.TABLE_WISHLIST +
+                " WHERE " + DataBaseHelper.Col_User_Phone + " = ?", new String[]{userPhone});
     }
 }
