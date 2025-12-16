@@ -7,45 +7,80 @@
     android:background="@drawable/add_form_bg"
     android:orientation="vertical"
     android:layout_margin="10dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Game"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/txtNama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama Game"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/txtHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harga: 0"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="5dp"/>
 
-    <TextView
-        android:id="@+id/txtHarga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Harga: 0"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="5dp"/>
+        <TextView
+            android:id="@+id/txtTabungan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tabungan/Hari: 0"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/white"/>
 
-    <TextView
-        android:id="@+id/txtTabungan"
+        <TextView
+            android:id="@+id/txtPlan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plan: Harian"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:id="@+id/txtHari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Butuh: - hari"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <Space
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tabungan/Hari: 0"
-        android:layout_marginTop="5dp"
-        android:textColor="@android:color/white"/>
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/EditButton"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:text="Edit"
+            android:textColor="#0000FF"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/HapusButton"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="Hapus"
+            android:padding="5dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtPlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Plan: Harian"
-        android:layout_marginTop="5dp"
-        android:textColor="@android:color/white"/>
-    <TextView
-        android:id="@+id/txtHari"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Butuh: - hari"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+</LinearLayout>
+
 
 </LinearLayout>

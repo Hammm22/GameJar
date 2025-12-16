@@ -3,6 +3,7 @@ package com.example.gamejar.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,9 +17,16 @@ import java.util.ArrayList;
 public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHolder> {
 
     ArrayList<WishListModel> list;
+    OnWishAction listener;
 
-    public WishListAdapter(ArrayList<WishListModel> list){
+    public interface OnWishAction {
+        void onEdit(WishListModel model, int position);
+        void onDelete(WishListModel model, int position);
+    }
+
+    public WishListAdapter(ArrayList<WishListModel> list, OnWishAction listener){
         this.list = list;
+        this.listener = listener;
     }
 
     @NonNull
@@ -38,25 +46,13 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
         holder.txtTabungan.setText("Tabungan/Hari: Rp " + model.getTabungan());
         holder.txtPlan.setText("Plan: " + model.getPlan());
 
-        // =============== HITUNG BERAPA HARI ===============
-        int waktu = model.getWaktuTercapai();
+        holder.btnEdit.setOnClickListener(v -> {
+            listener.onEdit(model, position);
+        });
 
-        if (waktu == -1) {
-            holder.txtHari.setText("Target tidak valid");
-        } else {
-            switch (model.getPlan()) {
-                case "Harian":
-                    holder.txtHari.setText("Butuh: " + waktu + " hari");
-                    break;
-                case "Mingguan":
-                    holder.txtHari.setText("Butuh: " + waktu + " minggu");
-                    break;
-                case "Bulanan":
-                    holder.txtHari.setText("Butuh: " + waktu + " bulan");
-                    break;
-            }
-        }
-
+        holder.btnHapus.setOnClickListener(v -> {
+            listener.onDelete(model, position);
+        });
     }
 
     @Override
@@ -67,14 +63,19 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtNama, txtHarga, txtTabungan, txtPlan, txtHari;
+        Button btnEdit, btnHapus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             txtNama = itemView.findViewById(R.id.txtNama);
             txtHarga = itemView.findViewById(R.id.txtHarga);
             txtTabungan = itemView.findViewById(R.id.txtTabungan);
             txtPlan = itemView.findViewById(R.id.txtPlan);
-            txtHari = itemView.findViewById(R.id.txtHari); // <-- Added
+            txtHari = itemView.findViewById(R.id.txtHari);
+
+            btnEdit = itemView.findViewById(R.id.EditButton);
+            btnHapus = itemView.findViewById(R.id.HapusButton);
         }
     }
 }

@@ -39,15 +39,17 @@ public class ProfileFragment extends Fragment {
 
         dbManager = new DBManager(getActivity());
 
+        // Ambil SESSION
         SharedPreferences prefs = getActivity().getSharedPreferences("USER_DATA", Context.MODE_PRIVATE);
         String phone = prefs.getString("phone", null);
 
-        if(phone != null) {
+        if (phone != null) {
             Cursor cursor = dbManager.getUser(phone);
+
             if (cursor != null && cursor.moveToFirst()) {
 
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Name));
-                String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Phone ));
+                String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Phone));
 
                 tvName.setText(name);
                 tvPhone.setText(phoneNumber);
@@ -57,12 +59,11 @@ public class ProfileFragment extends Fragment {
         }
 
 
+        // Tombol Logout
         BtnLogout.setOnClickListener(v -> {
-
-            SharedPreferences.Editor editor = getActivity().getSharedPreferences("USER_DATA", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = prefs.edit();
             editor.clear();
             editor.apply();
-
 
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -72,3 +73,4 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 }
+

@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gamejar.Adapter.WishListAdapter;
-import com.example.gamejar.Adapter.WishListAdapter;
 import com.example.gamejar.DataBase.DBManager;
-import com.example.gamejar.GameModel.WishListModel;
-import com.example.gamejar.GameModel.WishListModel;
 import com.example.gamejar.DataBase.DataBaseHelper;
+import com.example.gamejar.GameModel.WishListModel;
 import com.example.gamejar.R;
 
 import java.util.ArrayList;
@@ -34,7 +32,6 @@ public class ProgressFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_progress, container, false);
     }
 
@@ -53,10 +50,9 @@ public class ProgressFragment extends Fragment {
 
     private void loadWishlist() {
         Cursor cursor = dbManager.getWishlist("default");
-
         list.clear();
 
-        if(cursor != null && cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Wish_ID));
                 String game = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Game_Name));
@@ -65,11 +61,42 @@ public class ProgressFragment extends Fragment {
                 String plan = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseHelper.Col_Saving_Plan));
 
                 list.add(new WishListModel(id, game, harga, tabung, plan));
-
             } while (cursor.moveToNext());
+            cursor.close();
         }
 
-        adapter = new WishListAdapter(list);
+        adapter = new WishListAdapter(list, new WishListAdapter.OnWishAction() {
+            @Override
+            public void onEdit(WishListModel model, int position) {
+                // Buat Bundle untuk bawa data ke EditFragment
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", model.getId());
+                bundle.putString("nama", model.getNama());
+                bundle.putString("harga", model.getHarga());
+                bundle.putString("tabungan", model.getTabungan());
+                bundle.putString("plan", model.getPlan());
+
+                // Buat instance EditFragment dan set arguments
+                EditFragment editFragment = new EditFragment();
+                editFragment.setArguments(bundle);
+
+                // Ganti fragment
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, editFragment) // ganti fragment_container sesuai layout
+                        .addToBackStack(null)
+                        .commit();
+            }
+
+            @Override
+            public void onDelete(WishListModel model, int position) {
+                dbManager.deleteWish(model.getId()); // Hapus dari database
+                list.remove(position);               // Hapus dari array
+                adapter.notifyItemRemoved(position); // Update UI
+            }
+        });
+
+
         rvWishlist.setAdapter(adapter);
     }
 }

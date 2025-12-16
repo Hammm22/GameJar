@@ -9,7 +9,7 @@
 <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Tambah WishList Game"
+    android:text="Edit WishList"
     android:textSize="16pt"
     android:textColor="@color/white"
     android:textStyle="bold"
@@ -121,10 +121,10 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"/>
         <Button
-            android:id="@+id/Tambah"
+            android:id="@+id/Ubah"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:text="Tambah"
+            android:text="Ubah"
             android:textStyle="bold"
             android:textSize="10pt"
             android:background="@drawable/search_game_style" />

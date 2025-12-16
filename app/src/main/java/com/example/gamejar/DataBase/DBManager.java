@@ -66,4 +66,23 @@ public class DBManager {
         return db.rawQuery("SELECT * FROM " + DataBaseHelper.TABLE_WISHLIST +
                 " WHERE " + DataBaseHelper.Col_User_Phone + " = ?", new String[]{userPhone});
     }
+
+    public boolean deleteWish(int id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        return db.delete(DataBaseHelper.TABLE_WISHLIST, DataBaseHelper.Col_Wish_ID + "=?",
+                new String[]{String.valueOf(id)}) > 0;
+    }
+
+    public boolean updateWishlist(int id, String gameName, String price, String savingPerDay, String plan) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DataBaseHelper.Col_Game_Name, gameName);
+        values.put(DataBaseHelper.Col_Game_Price, price);
+        values.put(DataBaseHelper.Col_Saving_Per_Day, savingPerDay);
+        values.put(DataBaseHelper.Col_Saving_Plan, plan);
+        int result = db.update(DataBaseHelper.TABLE_WISHLIST, values, DataBaseHelper.Col_Wish_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+        return result > 0;
+    }
+
 }

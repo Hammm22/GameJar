@@ -41,31 +41,23 @@ public class WishListModel {
     // ============================
     public int getWaktuTercapai() {
         try {
-            int hargaInt = Integer.parseInt(harga);
-            int tabungInt = Integer.parseInt(tabungan);
+            int hargaInt = Integer.parseInt(harga.replaceAll("[^0-9]", ""));
+            int tabungInt = Integer.parseInt(tabungan.replaceAll("[^0-9]", ""));
 
             if (tabungInt <= 0) return -1;
 
-            // Jika Harian → hitung hari
-            if (plan.equalsIgnoreCase("Harian")) {
-                return (int) Math.ceil((double) hargaInt / tabungInt);
+            int hari = hargaInt / tabungInt;
+
+            switch (plan) {
+                case "Harian": return hari;
+                case "Mingguan": return (int) Math.ceil(hari / 7.0);
+                case "Bulanan": return (int) Math.ceil(hari / 30.0);
+                default: return -1;
             }
-
-            // Jika Mingguan → hitung minggu
-            if (plan.equalsIgnoreCase("Mingguan")) {
-                return (int) Math.ceil((double) hargaInt / tabungInt);
-            }
-
-            // Jika Bulanan → hitung bulan
-            if (plan.equalsIgnoreCase("Bulanan")) {
-                return (int) Math.ceil((double) hargaInt / tabungInt);
-            }
-
-            return -1;
-
         } catch (Exception e) {
             return -1;
         }
     }
+
 
 }
